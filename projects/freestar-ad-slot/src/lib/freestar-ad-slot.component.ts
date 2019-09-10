@@ -35,7 +35,7 @@ export class FreestarAdSlot implements OnInit {
     });
   }
 
-  adSlotIsReady (placementName, slotId) {
+  adSlotIsReady (placementName: string, slotId: string) {
     return placementName && slotId && document.getElementById(placementName);
   }
 
