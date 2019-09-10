@@ -21,8 +21,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-lib": "mkdir -p ./dist && rm -rf ./dist/* && cp ./src/components/freestarAdSlot.ts ./dist/index.ts",
-    "postinstall": "npm run build-lib"
+    "build-lib": "mkdir -p ./dist && rm -rf ./dist/* && cp ./src/components/freestarAdSlot.ts ./dist/index.ts"
   },
   "dependencies": {
     "@angular/animations": "~8.1.3",
