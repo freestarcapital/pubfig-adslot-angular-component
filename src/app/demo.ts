@@ -4,7 +4,8 @@ import { Component,  OnInit } from '@angular/core';
   selector: 'demo',
   template: `
     <freestar-ad-slot
-      adUnit='{ "placementName": "div-gpt-ad-leaderboard-multi", "slotId": "div-gpt-ad-leaderboard-multi" }'
+      placementName='div-gpt-ad-leaderboard-multi'
+      slotId='div-gpt-ad-leaderboard-multi'
       classList='m-30 p-15 b-thin-red'
       adRefresh={{adRefreshCount}}
       (messageEmitter)="onMessageHook($event)"

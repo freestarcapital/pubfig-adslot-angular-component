@@ -122,6 +122,41 @@
           }
         }
       }
+    },
+    "FreestarAdSlot": {
+      "projectType": "library",
+      "root": "projects/freestar-ad-slot",
+      "sourceRoot": "projects/freestar-ad-slot/src",
+      "prefix": "Freestar",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/freestar-ad-slot/tsconfig.lib.json",
+            "project": "projects/freestar-ad-slot/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/freestar-ad-slot/src/test.ts",
+            "tsConfig": "projects/freestar-ad-slot/tsconfig.spec.json",
+            "karmaConfig": "projects/freestar-ad-slot/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/freestar-ad-slot/tsconfig.lib.json",
+              "projects/freestar-ad-slot/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "angular-js"
 }

@@ -1,0 +1,26 @@
+{
+  "name": "@freestar/pubfig-adslot-angular-component",
+  "description": "Freestar Pubfig AdSlot Angular Component",
+  "keywords": [
+    "freestar",
+    "pubfig",
+    "adslot-angular-component"
+  ],
+  "version": "1.0.5",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freestarcapital/pubfig-adslot-angular-component.git"
+  },
+  "bugs": {
+    "url": "https://github.com/freestarcapital/pubfig-adslot-angular-component/issues"
+  },
+  "homepage": "https://github.com/freestarcapital/pubfig-adslot-angular-component#readme",
+  "license": "ISC",
+  "peerDependencies": {
+    "q": "^1.5.1"
+  },
+  "files": [
+    "dist/*"
+  ]
+}
