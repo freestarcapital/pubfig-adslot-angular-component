@@ -1,24 +1,84 @@
-# FreestarAdSlot
+# Freestar Pubfig Ad Slot Angular Component
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+### Install
 
-## Code scaffolding
+```sh
+npm install --save @freestar/pubfig-adslot-angular-component
+```
 
-Run `ng generate component component-name --project FreestarAdSlot` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project FreestarAdSlot`.
-> Note: Don't forget to add `--project FreestarAdSlot` or else it will be added to the default project in your `angular.json` file. 
+### Usage
 
-## Build
+```js
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-Run `ng build FreestarAdSlot` to build the project. The build artifacts will be stored in the `dist/` directory.
+import { App } from './app';
+import { FreestarAdSlot } from '@freestar/pubfig-adslot-angular-component';
 
-## Publishing
+@NgModule({
+  declarations: [
+    App,
+    FreestarAdSlot
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [App]
+})
+export class Module { };
 
-After building your library with `ng build FreestarAdSlot`, go to the dist folder `cd dist/freestar-ad-slot` and run `npm publish`.
+import { Component,  OnInit } from '@angular/core';
 
-## Running unit tests
+@Component({
+  selector: 'demo',
+  template: `
+    <freestar-ad-slot
+      placementName='div-gpt-ad-leaderboard-multi'
+      slotId='div-gpt-ad-leaderboard-multi'
+      classList='m-30 p-15 b-thin-red'
+      adRefresh={{adRefreshCount}}
+      (messageEmitter)="onMessageHook($event)"
+    ></freestar-ad-slot>
+    <button (click)='onAdRefresh()'>Trigger Refresh</button>`
+})
+export class Demo implements OnInit {
+  constructor () {}
 
-Run `ng test FreestarAdSlot` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  ngOnInit () {
+    // example of automatically refreshing an ad every 5 seconds a total of 5 times
+    const interval = setInterval(() => {
+      const maxRefreshes = 5;
+      this.adRefreshCount++;
+      if (this.adRefreshCount === maxRefreshes) {
+        clearInterval(interval);
+      }
+    }, 5000);
+  }
 
-## Further help
+  adRefreshCount = 0;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  // example of manually refreshing an ad
+  onAdRefresh () {
+    this.adRefreshCount++;
+  }
+
+  onMessageHook (message: String) {
+    console.log(message);
+  }
+};
+```
+
+### Props
+
+**placementName**
+A *required* string of the ad unit's `placementName`.
+
+**slotId**
+A *required* string of the ad unit's `slotId`.
+
+**classList**
+An *optional* string representing any additional classes that should be applied to the wrapper dom element of the ad slot.
+
+**adRefresh**
+An *optional* number bound to the ad refresh. You can increment this value to trigger a refresh of the ad slot.

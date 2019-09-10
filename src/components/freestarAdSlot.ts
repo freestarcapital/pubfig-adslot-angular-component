@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, EventEmitter, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges } from '@angular/core';
 import { Promise } from 'q';
 
 @Component({
   selector: 'freestar-ad-slot',
-  template: `<div class="{{classes()}}" attr.id="{{adUnit.placementName}}"></div>`
+  template: `<div class="{{classes()}}" attr.id="{{placementName}}"></div>`
 })
 export class FreestarAdSlot implements OnInit {
 
   constructor () {}
 
-  @Input() adUnit: string = '';
+  @Input() placementName: string = '';
+  @Input() slotId: string = '';
   @Input() classList: string = '';
   @Input() adRefresh: Number = 0;
   @Output() messageEmitter = new EventEmitter<string>();
@@ -34,7 +35,7 @@ export class FreestarAdSlot implements OnInit {
     });
   }
 
-  adSlotIsReady ({ placementName, slotId }) {
+  adSlotIsReady (placementName, slotId) {
     return placementName && slotId && document.getElementById(placementName);
   }
 
@@ -45,29 +46,34 @@ export class FreestarAdSlot implements OnInit {
   newAdSlots () {
     this.getFreestar().then((freestar: { newAdSlots: (arg0: { placementName: string; slotId: string; }) => void; }) => {
       // @ts-ignore
-      if (this.adSlotIsReady(this.adUnit)) {
+      if (this.adSlotIsReady(this.placementName, this.slotId)) {
         // @ts-ignore
-        freestar.newAdSlots(this.adUnit);
-        this.messageEmitter.emit(`new-ad-slots ${JSON.stringify(this.adUnit)}`);
+        freestar.newAdSlots(this.getAdUnit());
+        this.messageEmitter.emit(`new-ad-slots ${this.placementName}`);
       }
     });
   }
 
-  ngOnInit () {
-    this.adUnit = JSON.parse(this.adUnit);
-  }
+  ngOnInit () { }
 
   ngAfterViewInit () {
     this.newAdSlots();
   }
 
+  getAdUnit () {
+    return {
+      placementName: this.placementName,
+      slotId: this.slotId
+    };
+  }
+
   ngOnDestroy () {
     this.getFreestar().then((freestar: { deleteAdSlots: (arg0: { placementName: string; slotId: string; }) => void; }) => {
       // @ts-ignore
-      if (this.adSlotIsReady(this.adUnit)) {
+      if (this.adSlotIsReady(this.placementName, this.slotId)) {
         // @ts-ignore
-        freestar.deleteAdSlots(this.adUnit);
-        this.messageEmitter.emit(`delete-ad-slots ${JSON.stringify(this.adUnit)}`);
+        freestar.deleteAdSlots(this.getAdUnit());
+        this.messageEmitter.emit(`delete-ad-slots ${this.placementName}`);
       }
     });
   }
@@ -76,7 +82,7 @@ export class FreestarAdSlot implements OnInit {
     const { previousValue, currentValue } = changes.adRefresh;
     if (currentValue !== previousValue) {
       this.newAdSlots();
-      this.messageEmitter.emit(`ad-refresh ${JSON.stringify(this.adUnit)}`)
+      this.messageEmitter.emit(`ad-refresh ${this.placementName}`);
     }
   }
 }

@@ -34,7 +34,8 @@ import { Component,  OnInit } from '@angular/core';
   selector: 'demo',
   template: `
     <freestar-ad-slot
-      adUnit='{ "placementName": "div-gpt-ad-leaderboard-multi", "slotId": "div-gpt-ad-leaderboard-multi" }'
+      placementName='div-gpt-ad-leaderboard-multi'
+      slotId='div-gpt-ad-leaderboard-multi'
       classList='m-30 p-15 b-thin-red'
       adRefresh={{adRefreshCount}}
       (messageEmitter)="onMessageHook($event)"
@@ -70,8 +71,11 @@ export class Demo implements OnInit {
 
 ### Props
 
-**adUnit**
-A *required* JSON string with the properties `placementName` & `slotId`.
+**placementName**
+A *required* string of the ad unit's `placementName`.
+
+**slotId**
+A *required* string of the ad unit's `slotId`.
 
 **classList**
 An *optional* string representing any additional classes that should be applied to the wrapper dom element of the ad slot.
