@@ -12,7 +12,11 @@
     "type": "git",
     "url": "https://github.com/freestarcapital/pubfig-adslot-angular-component.git"
   },
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freestarcapital/pubfig-adslot-angular-component/issues"
+  },
+  "homepage": "https://github.com/freestarcapital/pubfig-adslot-angular-component#readme",
+  "license": "ISC",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
