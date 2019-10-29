@@ -12,6 +12,7 @@ export class FreestarAdSlot implements OnInit {
   @Input() placementName: string = '';
   @Input() slotId: string = '';
   @Input() classList: string = '';
+  @Input() channel: string = null;
   @Input() adRefresh: Number = 0;
   @Output() messageEmitter = new EventEmitter<string>();
 
@@ -48,7 +49,7 @@ export class FreestarAdSlot implements OnInit {
       // @ts-ignore
       if (this.adSlotIsReady(this.placementName, this.slotId)) {
         // @ts-ignore
-        freestar.newAdSlots(this.getAdUnit());
+        freestar.newAdSlots(this.getAdUnit(), this.channel);
         this.messageEmitter.emit(`new-ad-slots ${this.placementName}`);
       }
     });
