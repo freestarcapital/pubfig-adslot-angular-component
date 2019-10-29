@@ -37,6 +37,7 @@ import { Component,  OnInit } from '@angular/core';
       placementName='div-gpt-ad-leaderboard-multi'
       slotId='div-gpt-ad-leaderboard-multi'
       classList='m-30 p-15 b-thin-red'
+      channel='custom_channel'
       adRefresh={{adRefreshCount}}
       (messageEmitter)="onMessageHook($event)"
     ></freestar-ad-slot>
@@ -76,6 +77,9 @@ A *required* string of the ad unit's `placementName`.
 
 **slotId**
 A *required* string of the ad unit's `slotId`.
+
+**channel**
+An *optional* string of a custom channel to use.
 
 **classList**
 An *optional* string representing any additional classes that should be applied to the wrapper dom element of the ad slot.
