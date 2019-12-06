@@ -36,10 +36,11 @@ import { Component,  OnInit } from '@angular/core';
     <freestar-ad-slot
       placementName='div-gpt-ad-leaderboard-multi'
       slotId='div-gpt-ad-leaderboard-multi'
+      [targeting]='["value1", "value2"]'
       classList='m-30 p-15 b-thin-red'
       channel='custom_channel'
       adRefresh={{adRefreshCount}}
-      (messageEmitter)="onMessageHook($event)"
+      (messageEmitter)='onMessageHook($event)'
     ></freestar-ad-slot>
     <button (click)='onAdRefresh()'>Trigger Refresh</button>`
 })
@@ -78,6 +79,9 @@ A *required* string of the ad unit's `placementName`.
 **slotId**
 A *required* string of the ad unit's `slotId`.
 
+**targeting**
+An *optional* array of the ad unit's `targeting` values.
+
 **channel**
 An *optional* string of a custom channel to use.
 
@@ -86,3 +90,14 @@ An *optional* string representing any additional classes that should be applied 
 
 **adRefresh**
 An *optional* number bound to the ad refresh. You can increment this value to trigger a refresh of the ad slot.
+
+### Glossary
+
+**placementName**
+A value acquired from Google Ad Manager (previously known as DFP/Adx), which will be provided by Freestar.
+
+**slotId**
+A value used for the DOM `<div>` id for the ad unit to render within.
+
+**targeting**
+A set of targeting values for the ad unit placement.
