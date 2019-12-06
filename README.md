@@ -90,3 +90,14 @@ An *optional* string representing any additional classes that should be applied 
 
 **adRefresh**
 An *optional* number bound to the ad refresh. You can increment this value to trigger a refresh of the ad slot.
+
+### Glossary
+
+**placementName**
+A value acquired from Google Ad Manager (previously known as DFP/Adx), which will be provided by Freestar.
+
+**slotId**
+A value used for the DOM `<div>` id for the ad unit to render within.
+
+**targeting**
+A set of targeting values for the ad unit placement.
