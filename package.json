@@ -22,7 +22,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build-lib": "ng build FreestarAdSlot",
-    "publish": "cd ./dist/freestar-ad-slot && npm publish --access public"
+    "publish": "npm run build-lib && cd ./dist/freestar-ad-slot && npm publish --access public"
   },
   "dependencies": {
     "@angular/animations": "~8.1.3",
