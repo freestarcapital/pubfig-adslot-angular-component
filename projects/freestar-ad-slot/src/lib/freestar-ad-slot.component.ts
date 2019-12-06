@@ -11,6 +11,7 @@ export class FreestarAdSlot implements OnInit {
 
   @Input() placementName: string = '';
   @Input() slotId: string = '';
+  @Input() targeting: any = [];
   @Input() classList: string = '';
   @Input() channel: string = null;
   @Input() adRefresh: Number = 0;
@@ -62,10 +63,14 @@ export class FreestarAdSlot implements OnInit {
   }
 
   getAdUnit () {
-    return {
+    const adUnit:any = {
       placementName: this.placementName,
       slotId: this.slotId
     };
+    if (this.targeting.length) {
+      adUnit.targeting = this.targeting;
+    }
+    return adUnit;
   }
 
   ngOnDestroy () {

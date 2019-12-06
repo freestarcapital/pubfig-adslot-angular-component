@@ -36,10 +36,11 @@ import { Component,  OnInit } from '@angular/core';
     <freestar-ad-slot
       placementName='div-gpt-ad-leaderboard-multi'
       slotId='div-gpt-ad-leaderboard-multi'
+      [targeting]='["value1", "value2"]'
       classList='m-30 p-15 b-thin-red'
       channel='custom_channel'
       adRefresh={{adRefreshCount}}
-      (messageEmitter)="onMessageHook($event)"
+      (messageEmitter)='onMessageHook($event)'
     ></freestar-ad-slot>
     <button (click)='onAdRefresh()'>Trigger Refresh</button>`
 })
@@ -77,6 +78,9 @@ A *required* string of the ad unit's `placementName`.
 
 **slotId**
 A *required* string of the ad unit's `slotId`.
+
+**targeting**
+An *optional* array of the ad unit's `targeting` values.
 
 **channel**
 An *optional* string of a custom channel to use.
